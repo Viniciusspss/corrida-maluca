@@ -4,8 +4,8 @@ export function selecaoPista(pistas, nomePista) {
 
 export function selecaoCorredor(corredores, nomeCorredor, nomeAliado, nomeInimigo){
     const corredor = corredores.find(corredor => corredor.nome === nomeCorredor)
-    let aliado = corredores.find(corredor => corredor.nome === nomeAliado)
-    let inimigo = corredores.find(corredor => corredor.nome === nomeInimigo)
+    let aliado = corredores.find(corredorAliadao => corredorAliadao.nome === nomeAliado)
+    let inimigo = corredores.find(corredorInimigo => corredorInimigo.nome === nomeInimigo)
 
     if (!aliado) {
         aliado = null
@@ -64,10 +64,6 @@ export function realizarCorrida(pista,corredores) {
                 corredor.debuffs += pista.debuff
                 corredor.desvantagemAplicada = true
             }
-
-            if (corredor.posicao < 0) {
-                corredor.posicao = 0;
-            }
             
 
             if (corredor.nome === "Dick Vigarista" && corredor.posicao >= pista.tamanho - 1) {
@@ -121,7 +117,7 @@ export function realizarCorrida(pista,corredores) {
                 primeiroLugar = corredor
             }
 
-            const vencedor = corredores.find(corredor => corredor.posicao >= pista.tamanho)
+            const vencedor = corredores.find(ganhador => ganhador.posicao >= pista.tamanho)
             if (vencedor) return vencedor
             
             
